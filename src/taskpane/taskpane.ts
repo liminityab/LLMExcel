@@ -12,7 +12,7 @@ async function insertLLMSetup() {
 
       const configRange = sheet.getRange("A1:B9");
       configRange.values = [
-        ["Config", ""], 
+        ["Config", ""],
         ["System Prompt", "You are a helpful assistant, always respond in CAPITAL LETTERS"],
         ["OpenAI", ""],
         ["OpenAI Model", "gpt-4o"],
