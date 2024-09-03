@@ -12,7 +12,7 @@ async function insertLLMSetup() {
 
       const configRange = sheet.getRange("A1:B9");
       configRange.values = [
-        ["Config", ""],
+        ["Config", ""], 
         ["System Prompt", "You are a helpful assistant, always respond in CAPITAL LETTERS"],
         ["OpenAI", ""],
         ["OpenAI Model", "gpt-4o"],
@@ -49,7 +49,7 @@ async function insertLLMSetup() {
         ["Prompt", "Answer"],
         [
           "",
-          '=IF($B$9="OpenAI", LLMExcel.PROMPT_STREAM(D2, $B$4, $B$5, $B$2, "openai"), LLMExcel.PROMPT_STREAM(D2, $B$6, $B$7, $B$2, "anthropic"))',
+          '=IF($B$9="OpenAI", LLMExcel.PROMPT_STREAM(D2, $B$4, $B$5, $B$2, "openai"), LLMExcel.PROMPT_STREAM(D2, $B$7, $B$8, $B$2, "anthropic"))',
         ],
       ];
 
