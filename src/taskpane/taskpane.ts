@@ -14,10 +14,10 @@ async function insertLLMSetup() {
       configRange.values = [
         ["Config", ""],
         ["System Prompt", "You are a helpful assistant, always respond in CAPITAL LETTERS"],
-        ["OpenAI", "true"],
+        ["OpenAI", ""],
         ["OpenAI Model", "gpt-4o"],
         ["OpenAI API Key", "your-openai-api-key"],
-        ["Anthropic", "false"],
+        ["Anthropic", ""],
         ["Anthropic Model", "claude-3-5-sonnet-20240620"],
         ["Anthropic API Key", "your-anthropic-api-key"],
         ["Selected Provider", "OpenAI"],
@@ -49,7 +49,7 @@ async function insertLLMSetup() {
         ["Prompt", "Answer"],
         [
           "",
-          '=IF(B9="OpenAI", LLMExcel.PROMPT_STREAM(D2, B4, B5, B2, "openai"), LLMExcel.PROMPT_STREAM(D2, B7, B8, B2, "anthropic"))',
+          '=IF($B$9="OpenAI", LLMExcel.PROMPT_STREAM(D2, $B$4, $B$5, $B$2, "openai"), LLMExcel.PROMPT_STREAM(D2, $B$6, $B$7, $B$2, "anthropic"))',
         ],
       ];
 
