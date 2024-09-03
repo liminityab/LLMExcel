@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLMExcel</title>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <div id="container">
+        <header class="ms-welcome__header">
+            <img class="ms-logo" src="https://llmexcel.liminity.se/assets/icon.svg" alt="LLMExcel" title="LLMExcel" />
+            <h1 class="ms-font-su">LLMExcel</h1>
+            <p class="ms-font-l">Powered by <a href="https://liminity.se" target="_blank">Liminity AB</a></p>
+        </header>
+
+        <main class="ms-welcome__main">
+            <section class="ms-welcome__features">
+                <h2 class="ms-font-xl">About</h2>
+                <p class="ms-font-m">LLMExcel is a free, open-source Excel add-in for using GPT and Anthropic inside Excel.</p>
+
+            </section>
+<!-- ... existing code ... -->
+<section class="ms-welcome__features">
+    <h2 class="ms-font-xl">Quick Setup</h2>
+    <p class="ms-font-m">Click the button below to insert the LLM configuration and Prompt | Answer table:</p>
+    <button id="insert-llm-setup" class="ms-Button">
+      <span class="ms-Button-label">Insert LLM Setup</span>
+    </button>
+  </section>
+  <!-- ... rest of the existing code ... -->
+            <section class="ms-welcome__features">
+                <h2 class="ms-font-xl">How to Use</h2>
+                <ol class="ms-font-m">
+                    <li>Use the PROMPT function:
+                        <code class="ms-font-m">=PROMPT(message, model, apiKey, systemPrompt, provider)</code>
+                    </li>
+                    <li>For streaming responses, use PROMPT_STREAM:
+                        <code class="ms-font-m">=PROMPT_STREAM(message, model, apiKey, systemPrompt, provider)</code>
+                    </li>
+                </ol>
+                <p class="ms-font-m">
+                    Parameters:
+                    <ul>
+                        <li><strong>message:</strong> The prompt message to send to the AI.</li>
+                        <li><strong>model:</strong> The AI model to use. See provider documentation for available models:
+                            <ul>
+                                <li><a href="https://platform.openai.com/docs/models" target="_blank">OpenAI Models</a></li>
+                                <li><a href="https://docs.anthropic.com/claude/docs/models-overview" target="_blank">Anthropic Models</a></li>
+                            </ul>
+                        </li>
+                        <li><strong>apiKey:</strong> Your API key for the chosen provider. Can be a direct string or a cell reference.</li>
+                        <li><strong>systemPrompt:</strong> (Optional) A system prompt to provide context for the AI.</li>
+                        <li><strong>provider:</strong> The AI provider to use ("openai" or "anthropic").</li>
+                    </ul>
+                </p>
+                <p class="ms-font-m">Note: Both OpenAI and Anthropic integrations are available. Ensure you use the correct API key for the chosen provider.</p>
+                <p class="ms-font-m">
+                    <a href="https://github.com/liminityab/LLMExcel" target="_blank" class="ms-Link">
+                        <svg height="10" width="10" viewBox="0 0 16 16" version="1.1">
+                            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </p>
+            </section>
+
+            <section class="ms-welcome__features">
+                <h2 class="ms-font-xl">Privacy Notice</h2>
+                <p class="ms-font-m">Your queries are sent directly to OpenAI/Anthropic servers. No data is stored by Liminity.</p>
+                <footer class="ms-welcome__footer">
+                    <p class="ms-font-s">2024 Liminity AB. All rights reserved.</p>
+                </footer>
+            </section>
+        </main>
+
+
+    </div>
+</body>
+
+</html>
