@@ -24,5 +24,6 @@ resize_image 80
 resize_image 64
 resize_image 32
 resize_image 16
+resize_image 300
 
 echo "Icon resizing complete. Output saved in $output_folder"
