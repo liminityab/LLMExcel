@@ -1,6 +1,6 @@
-# LLMExcel
+# LLM add-in for Excel
 
-LLMExcel is a free, open-source Excel add-in that allows you to use GPT and Anthropic AI models directly within Excel spreadsheets.
+LLM add-in for Excel is a free, open-source Excel add-in that allows you to use GPT and Anthropic AI models directly within Excel spreadsheets.
 
 ## Features
 
@@ -47,7 +47,7 @@ For more detailed information on available models:
 
 ## Contributing
 
-We welcome contributions to LLMExcel! As an open-source project, we appreciate any help, from bug reports to feature additions. Here's how you can contribute:
+We welcome contributions to LLM add-in for Excel! As an open-source project, we appreciate any help, from bug reports to feature additions. Here's how you can contribute:
 
 1. Fork the repository
 2. Create a new branch for your feature or bug fix
@@ -62,4 +62,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) fi
 
 ## About
 
-LLMExcel is developed and maintained by [Liminity AB](https://liminity.se).
+LLM add-in for Excel is developed and maintained by [Liminity AB](https://liminity.se).

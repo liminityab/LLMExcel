@@ -93,7 +93,8 @@ function createAIClient(provider: Provider, apiKey: string): AIClient {
 /**
  * Generates a response based on the given prompt using the specified AI model and provider.
  * @customfunction PROMPT
- * @param message The prompt message to send to the AI.
+ * @helpUrl https://llmexcel.liminity.se/help
+ * @param message The prompt message to send to the AI. a
  * @param model The AI model to use for generating the response.
  * @param apiKey The API key for the AI service.
  * @param systemPrompt An optional system prompt to provide context for the AI.
@@ -112,23 +113,38 @@ export async function prompt(
       throw new Error("Missing required parameters");
     }
 
-    const client = createAIClient(provider as Provider, apiKey);
+    if (!["openai", "anthropic"].includes(provider.toLowerCase())) {
+      throw new Error("Invalid provider. Must be 'openai' or 'anthropic'");
+    }
+
+    const client = createAIClient(provider.toLowerCase() as Provider, apiKey);
     const messages: Message[] = systemPrompt
       ? [
           { role: "system", content: systemPrompt },
           { role: "user", content: message },
         ]
       : [{ role: "user", content: message }];
-    return await client.generateCompletion(messages, model);
+
+    const response = await client.generateCompletion(messages, model);
+    if (!response) {
+      throw new Error("Empty response from AI provider");
+    }
+    return response;
   } catch (error) {
     console.error("Error in prompt function:", error);
-    return `Error: ${error.message}`;
+    if (error instanceof Error) {
+      return `Error: ${error.message}`;
+    } else {
+      return "An unexpected error occurred";
+    }
   }
 }
 
 /**
  * Generates a streaming response based on the given prompt using the specified AI model and provider.
  * @customfunction PROMPT_STREAM
+ * @streaming
+ * @helpUrl https://llmexcel.liminity.se/help
  * @param message The prompt message to send to the AI.
  * @param model The AI model to use for generating the response.
  * @param apiKey The API key for the AI service.
@@ -144,32 +160,53 @@ export function promptStream(
   provider: string,
   invocation: CustomFunctions.StreamingInvocation<string>
 ): void {
-  if (!message || !model || !apiKey || !provider) {
-    invocation.setResult("Error: Missing required parameters");
-    return;
-  }
+  try {
+    if (!message || !model || !apiKey || !provider) {
+      throw new Error("Missing required parameters");
+    }
 
-  const client = createAIClient(provider as Provider, apiKey);
-  let fullResponse = "";
+    if (!["openai", "anthropic"].includes(provider.toLowerCase())) {
+      throw new Error("Invalid provider. Must be 'openai' or 'anthropic'");
+    }
 
-  const messages: Message[] = systemPrompt
-    ? [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: message },
-      ]
-    : [{ role: "user", content: message }];
+    const client = createAIClient(provider.toLowerCase() as Provider, apiKey);
+    let fullResponse = "";
 
-  client
-    .generateStreamingCompletion(messages, model, (chunk) => {
-      fullResponse += chunk;
-      invocation.setResult(fullResponse);
-    })
-    .catch((error) => {
-      console.error("Error in promptStream function:", error);
+    const messages: Message[] = systemPrompt
+      ? [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: message },
+        ]
+      : [{ role: "user", content: message }];
+
+    client
+      .generateStreamingCompletion(messages, model, (chunk) => {
+        fullResponse += chunk;
+        invocation.setResult(fullResponse);
+      })
+      .then(() => {
+        if (!fullResponse) {
+          throw new Error("Empty response from AI provider");
+        }
+      })
+      .catch((error) => {
+        console.error("Error in promptStream function:", error);
+        if (error instanceof Error) {
+          invocation.setResult(`Error: ${error.message}`);
+        } else {
+          invocation.setResult("An unexpected error occurred");
+        }
+      });
+
+    invocation.onCanceled = () => {
+      console.log("Stream cancelled by user");
+    };
+  } catch (error) {
+    console.error("Error in promptStream function setup:", error);
+    if (error instanceof Error) {
       invocation.setResult(`Error: ${error.message}`);
-    });
-
-  invocation.onCanceled = () => {
-    // Handle cancellation if needed
-  };
+    } else {
+      invocation.setResult("An unexpected error occurred");
+    }
+  }
 }

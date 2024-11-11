@@ -2,10 +2,10 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <Id>3b8923b8-6b7c-4b50-bf7e-1bd1844528d7</Id>
   <Version>1.0.0.2</Version>
-  <ProviderName>LLMExcel</ProviderName>
+  <ProviderName>Liminity AB</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="LLMExcel"/>
-  <Description DefaultValue="LLMExcel is a free, open-source Excel add-in that allows you to use GPT and Anthropic AI models directly within Excel spreadsheets. "/>
+  <DisplayName DefaultValue="LLM add-in for Excel"/>
+  <Description DefaultValue="LLM add-in for Excel is a free, open-source Excel add-in that allows you to use GPT and Anthropic AI models directly within Excel spreadsheets. "/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://www.liminity.se/"/>
@@ -96,13 +96,13 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="Functions.Namespace" DefaultValue="LLMExcel"/>
-        <bt:String id="GetStarted.Title" DefaultValue="Get started with LLMExcel"/>
+        <bt:String id="GetStarted.Title" DefaultValue="Get started with LLM add-in for Excel"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="AI Tools"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Open LLMExcel"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Open LLM add-in for Excel"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your LLMExcel add-in loaded successfully. Go to the HOME tab and click the 'Open LLMExcel' button to get started."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to open LLMExcel"/>
+        <bt:String id="GetStarted.Description" DefaultValue="Your LLM add-in for Excel loaded successfully. Go to the HOME tab and click the 'Open LLM add-in for Excel' button to get started."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to open LLM add-in for Excel"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
